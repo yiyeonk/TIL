@@ -39,13 +39,13 @@ $ git config user.email
 ```
 - 기본 명령어
 
-| 명령어                       | 설명                   |
-| ---------------------------- | ---------------------- |
-| `$ mkdir <name1, name2 ...>` | 폴더 생성              |
-| `$ touch <name>`             | 파일 생성              |
-| `$ cd <directory>`           | 디렉토리 설정          |
-| `$ cd ..` = `$ cd ~`         | 위로가기 / 홈으로 가기 |
-| `$ls`                        | 목록 확인              |
+| 명령어                       | 설명                      |
+| ---------------------------- | ------------------------- |
+| `$ mkdir <name1, name2 ...>` | 폴더 생성(make directory) |
+| `$ touch <name>`             | 파일 생성                 |
+| `$ cd <directory>`           | 디렉토리 설정             |
+| `$ cd ..` = `$ cd ~`         | 위로가기 / 홈으로 가기    |
+| `$ls`                        | 목록 확인                 |
 
 
 
@@ -85,6 +85,32 @@ $ git add <파일명>
 
 
 
+
+### 원격저장소 등록하기
+
+- remote 저장소로 추가
+
+```
+$ git remote add origin <URL>   # 등록하기
+
+$ git remote -v  # 등록 확인
+origin <URL>...   # origin remote 저장소의 이름
+
+$ git remote rm <remote_repo_name>
+```
+
+
+
+### 원격 저장소에 push 하기
+
+```
+$ git push origin master  # remote 이름이 origin일 경우에 master 브랜치를 push함
+```
+
+
+
+
+
 ## Summary
 
 | 명령어                             | 설명                                                |
@@ -94,3 +120,12 @@ $ git add <파일명>
 | `$ git commit -m "commit message"` |                                                     |
 |                                    |
 
+
+
+
+
+
+
+
+
+![image-20201223094921798](basic.assets/image-20201223094921798.png)
