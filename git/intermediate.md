@@ -1,85 +1,133 @@
 # Github - Git Intermediate
 
-## Branch
 
-### 브랜치 생성하기(`git branch <name>`)
 
-### 브랜치 확인하기(`git branch`)
+## Branch란?
 
-### 브랜치 옮기기(HEAD 움직이기 `git switch <name>`)
-
-### 브랜치 합치기(`git merge <name>`)
-
-- 항상 master에서 다른 브랜치를 병합
-
-### 브랜치 삭제하기(`git branch -d <name>`)
+- 코드 전체를 복사하고 나서 원래 코드와는 상관없이 독립적으로 개발하는 것
+- 브랜치 생성 - 작업 - merge
 
 
 
-$ vim <파일명.md> : 터미널에서 사용하는 문서 편집
+## Branch 사용법
 
-i : 편집 시작 > esc
+#### 1. 브랜치 생성
 
-dd : 삭제
-
-:w 저장
-
-:q 나오기
-
-:q! 강제종료(저장x)
+```
+$ git branch <name>
+```
 
 
 
-missing semester kr
+#### 2. 브랜치 확인
 
-shell = cli
-
-
-
-commit message 변경(최근 것만 해당)
-
-$ git commit --amend 
+```
+$ git branch   # 현황 확인
+```
 
 
 
-$ git branch
+#### 3. 브랜치 이동(head 이동)
 
-$ git switch about : about 으로 이동 (Head가 움직임)
+- Git이 작업 중인 브랜치를 파악(현재 작업 중이 브랜치를 가리키는 head)
 
-git commit -m 'add home'
-git branch about  # about 브랜치 생성
-git switch about  # about 브랜치로 이동
-git branch  # 현재 브랜치 현황 확인
+```
+$ git switch <name>
+ex. $ git switch master  # head를 master에 이동
+```
 
-git switch master : head를 master에 이동
+```
+$ git checkout -b <branch name>  # git branch 만들기 + 이동
+= $ git switch -c <branch name>
+```
 
-git merge about : master에 병합
-
-git branch -d about # about 삭제
-
-
-
-git branch 만들기 + 이동 => git checkout -b <branch name>
-
- =git switch -c <branch name>
+```
+$ git switch -h  # 도움말
+```
 
 
 
+#### 4. 브랜치 합치기
 
+- 합칠 브랜치에서 합쳐질 브랜치를 merge 하면 됨
+- 항상 master에서 다른 브랜치를 병합(master에 병합)
 
-현재는 master에서만 branch하는 것이 문제
-
-협업을 하기 위해서는 remote에 올려서 하는 것이 
-
-switch -h : help
-
-git push origin branch_a : 각자의 브랜치를 푸쉬
-
-ctrl + l : clear
-
-협업 시 pull은 master에서 당김 : switch master
-
-저장소안에 저장소를 만드는 것은 안됨
+```
+$ git switch master   # master 브랜치에서 merge
+$ git merge <name>
+```
 
 
 
+#### 5. 브랜치 삭제하기
+
+```
+$ git branch -d <name>
+```
+
+
+
+## Remote Branch
+
+#### 1. Push
+
+- 리모트 저장소에 전송 : 로컬의 브랜치를 서버로 전송하려면 권한이 있는 리모트 저장소에 push 해야 함.
+
+```
+$ git push origin <branch name>
+```
+
+
+
+#### 2. Pull
+
+- 서버에는 존재하지만, 로컬에는 아직 없는 데이터를 받아와서 저장
+- pull은 master branch에서 당겨와야 함
+
+```
+$ git pull origin 
+```
+
+
+
+*master에서만 branch하지 않고, 협업을 하기 위해서는 remote에 저장해서 진행하는 것이 좋음.
+
+*저장소안에 저장소를 만드는 것은 안됨
+
+
+
+#### Tip. 
+
+##### 1. 문서편집
+
+| 명령어             | 설명                          |
+| ------------------ | ----------------------------- |
+| `$vim <파일명.md>` | 터미널에서 사용하는 문서 편집 |
+| `i`                | 편집시작 -> ESC               |
+| `dd`               | 삭제                          |
+| `:w`               | 저장                          |
+| `:q`               | 나오기                        |
+| `:q!`              | 강제종료(저장X)               |
+
+##### 2. 기타
+
+| 명령어   | 설명  |
+| -------- | ----- |
+| `ctrl+i` | clear |
+|          |       |
+|          |       |
+|          |       |
+
+
+
+## Summary
+
+| 명령어                            | 설명                   |
+| --------------------------------- | ---------------------- |
+| `$ git branch <name>`             | 브랜치 생성            |
+| `$ git branch `                   | 브랜치 현황 확인       |
+| `$ git switch <name>`             | 브랜치 이동            |
+| `$ git switch -c <branch name>`   | branch 만들기 + 이동   |
+| `$ git merge <name>`              | 브랜치 합치기          |
+| `$ git push origin <branch name>` | 저장소에 올리기        |
+| `$ git pull origin`               | 로컬 저장소로 내려받기 |
