@@ -1,5 +1,0 @@
-hello
-nicetomeetyou
-bye1번째 줄 추가
-2번째 줄 추가
-3번째 줄 추가
